@@ -67,8 +67,8 @@ public class TowerTargeting : MonoBehaviour
         // Target lock
         Vector2 direction = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+        //Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        //partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
 
         if (fireCountdown <= 0f)
         {
