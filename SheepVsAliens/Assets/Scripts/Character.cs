@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
     private void Update()
     {
         transform.position += goalDirection * speed * Time.deltaTime;
-        while(Vector2.Distance(startingPosition, transform.position) >= goalDistance)
+        while (Vector2.Distance(startingPosition, transform.position) >= goalDistance)
         {
             if (waypointIndex < Wpoints.waypoints.Length - 1)
             {
@@ -34,12 +34,21 @@ public class Character : MonoBehaviour
                 startingPosition = transform.position;
                 goalDistance = Vector2.Distance(startingPosition, Wpoints.waypoints[waypointIndex].position);
                 goalDirection = (Wpoints.waypoints[waypointIndex].position - startingPosition).normalized;
-            } 
+            }
             else
             {
                 Destroy(gameObject);
                 break;
             }
         }
+    }
+    public float DistanceFromStart()
+    {
+        float distance = 0f;
+        for(int i = 0; i < waypointIndex - 1; i++)
+        {
+            distance += Vector2.Distance(Wpoints.waypoints[i].position, Wpoints.waypoints[i + 1].position);
+        }
+        return distance + Vector2.Distance(Wpoints.waypoints[waypointIndex - 1].position, transform.position);
     }
 }

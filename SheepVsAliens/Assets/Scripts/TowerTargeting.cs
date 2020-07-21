@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerTargeting : MonoBehaviour
 {
-    public Transform target;
+    GameObject target = null;
 
     [Header("Attributes")]
 
@@ -15,12 +15,13 @@ public class TowerTargeting : MonoBehaviour
     [Header("Unity Setup Fields")]
     public string enemyTag = "Alien";
 
-    public Transform partToRotate;
     public float turnSpeed = 10f;
 
     public GameObject objectToShoot;
+    public bool rotate;
     public Transform firePoint;
-
+    Vector3 turrentRotation;
+    Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,30 +30,27 @@ public class TowerTargeting : MonoBehaviour
 
     void UpdateTarget()
     {
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        Character[] enemies = GameObject.FindObjectsOfType<Character>();
         float minDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (GameObject enemy in enemies)
+        GameObject furthestEnemy = null;
+        float distanceToEnemy = Mathf.Infinity;
+        foreach (Character enemy in enemies)
         {
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < minDistance)
+            distanceToEnemy = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+            if(distanceToEnemy <= range / 2f)
             {
-                minDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                if (enemy.DistanceFromStart() < minDistance)
+                {
+                    minDistance = distanceToEnemy;
+                    furthestEnemy = enemy.gameObject;
+                }
             }
         }
 
-        if (nearestEnemy != null && minDistance <= range)
-        {
-            target = nearestEnemy.transform;
-        }
+        if (furthestEnemy != null)
+            target = furthestEnemy;
         else
-        {
             target = null;
-        }
-
     }
 
     // Update is called once per frame
@@ -63,16 +61,17 @@ public class TowerTargeting : MonoBehaviour
 
         // If there isn't a target the tower can shoot
         if (target == null) return;
-
         // Target lock
-        Vector2 direction = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        //Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        //partToRotate.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+        direction = target.transform.position - transform.position;
+        if(rotate)
+        {
+            turrentRotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f)), Time.deltaTime * turnSpeed).eulerAngles;
+            transform.rotation = Quaternion.Euler(turrentRotation);
+        }
 
         if (fireCountdown <= 0f)
         {
-            shoot();
+            shoot(target);
             fireCountdown = 1f / fireRate;
         }
         fireCountdown -= Time.deltaTime;
@@ -82,19 +81,13 @@ public class TowerTargeting : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, range / 2f);
+        Gizmos.DrawWireSphere(direction + transform.position, 1f);
     }
 
-
-    void shoot()
+    void shoot(GameObject target)
     {
-
-
-        GameObject proj = (GameObject)Instantiate(objectToShoot, firePoint.position, firePoint.rotation);
-        //FirePoint projectile = proj.GetComponent<FirePoint>();
-        //if (projectile != null)
-        //{
-        //    projectile.chase(target);
-        //}
+        GameObject proj = Instantiate(objectToShoot, firePoint.position, Quaternion.Euler((rotate) ? turrentRotation : new Vector3(0f, 0f, Mathf.Atan2(direction.y, direction.x))));
+        proj.GetComponent<FirePoint>().Fire(target);
     }
 }

@@ -10,6 +10,18 @@ public class AlienHealth : MonoBehaviour
     public void reduceHealth(float amount)
     {
         hp -= amount;
-        if (hp <= 0) Destroy(gameObject);
+        if (hp <= 0) 
+            Destroy(gameObject);
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        UnityEngine.Debug.Log("Hit");
+        FirePoint firePoint = col.gameObject.GetComponent<FirePoint>();
+        if (firePoint != null)
+        {
+            UnityEngine.Debug.Log("Hit");
+            reduceHealth(firePoint.damage);
+            Destroy(col.gameObject);
+        }
     }
 }

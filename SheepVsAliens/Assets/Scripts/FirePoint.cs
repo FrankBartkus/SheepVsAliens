@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class FirePoint : MonoBehaviour
 {
-    public float howFarAway = 0.7f;
-    public float xPos;
-    public float yPos;
-    public Transform position;
+    public float speed;
+    public float damage;
+    public static float timeTilDeath = 10f;
+    float timeAlive = 0f;
 
-    public void whereToShoot()
+    public void Fire(GameObject target)
     {
-        
-        //position.position = (xPos, yPos, 0f);
+        gameObject.AddComponent<Rigidbody2D>().velocity = speed * (target.transform.position - transform.position).normalized;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
     }
+    void Update()
+    {
+        if (timeAlive < timeTilDeath)
+            timeAlive += Time.deltaTime;
+        else
+            Destroy(gameObject);
+    }
+
 }

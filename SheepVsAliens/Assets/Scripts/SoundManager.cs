@@ -7,6 +7,7 @@ public static class SoundManager
 
     public enum Sound
     {
+        LevelTheme,
         ButtonClick,
         ButtonOver,
     }
@@ -17,8 +18,15 @@ public static class SoundManager
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.PlayOneShot(GetAudioClip(sound));
     }
-
-    private static AudioClip GetAudioClip(Sound sound)
+    public static void LoopSound(Sound sound)
+    {
+        GameObject soundGameObject = new GameObject("Sound");
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+        audioSource.clip = GetAudioClip(sound);
+        audioSource.Play();
+    }
+    public static AudioClip GetAudioClip(Sound sound)
     {
         foreach (GameAssets.SoundAudioClip soundAudioClip in GameAssets.i.soundAudioClipArray)
             if (soundAudioClip.sound == sound)

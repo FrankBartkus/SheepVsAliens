@@ -16,8 +16,8 @@ public class GameHandler : MonoBehaviour
     private void Start()
     {
         Debug.Log("GameHandler.Start");
-
         levelGrid = new LevelGrid(20, 20);
+        SoundManager.LoopSound(SoundManager.Sound.LevelTheme);
     }
 
     private void Update()
