@@ -32,17 +32,42 @@ public class GameHandler : MonoBehaviour
     public static void ResumeGame()
     {
         PauseWindow.HideStatic();
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
+        {
+            audio.UnPause();
+        }
         Time.timeScale = 1f;
     }
 
     public static void PauseGame()
     {
         PauseWindow.ShowStatic();
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
+        {
+            audio.Pause();
+        }
         Time.timeScale = 0f;
     }
 
     public static bool IsGamePaused()
     {
         return Time.timeScale == 0f;
+    }
+
+    public static void GameOverLevel()
+    {
+        GameOverWindow.ShowStatic();
+        GameWindow.HideStatic();
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
+            audio.Stop();
+        Time.timeScale = 0f;
+    }
+    public static void WinLevel()
+    {
+        GameOverWindow.ShowStatic();
+        GameWindow.HideStatic();
+        foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
+            audio.Stop();
+        Time.timeScale = 0f;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FirePoint : MonoBehaviour
 {
     public float speed;
-    public float damage;
+    public int damage;
     public static float timeTilDeath = 10f;
     float timeAlive = 0f;
 
@@ -21,5 +21,4 @@ public class FirePoint : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
 }

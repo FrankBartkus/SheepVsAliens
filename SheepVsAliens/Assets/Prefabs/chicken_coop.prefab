@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8438443419120556428}
   - component: {fileID: 8438443419120556427}
   - component: {fileID: 8438443419120556429}
+  - component: {fileID: 4766619030095888695}
   m_Layer: 0
   m_Name: chicken_coop
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8438443419120556426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7956407, y: -1.815515, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8438443420102526743}
@@ -95,14 +96,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae8e99fd2c626e4ba5715c1677657fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  fireRate: 1
+  range: 5
+  fireRate: 2.5
+  cost: 20
   enemyTag: Alien
   turnSpeed: 10
   objectToShoot: {fileID: 109813984795442049, guid: 83035f4111c54dd4b8a36768488496e2,
     type: 3}
   rotate: 0
   firePoint: {fileID: 8438443420102526743}
+--- !u!114 &4766619030095888695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438443419120556426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2ec684e25429d4e8df52c2c48caf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8438443420102526742
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8438443420102526742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8438443419120556428}

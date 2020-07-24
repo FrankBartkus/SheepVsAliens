@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class AlienHealth : MonoBehaviour
 {
-    public float hp = 100f;
-    
+    public int hp = 100;
+    public int moneyForDefeating;
 
-    public void reduceHealth(float amount)
+    public void reduceHealth(int amount)
     {
         hp -= amount;
-        if (hp <= 0) 
+        if (hp <= 0)
+        {
+            PlayerStats.changeMoneyAmount(moneyForDefeating);
+            --WaveSpawner.EnemiesAlive;
             Destroy(gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        UnityEngine.Debug.Log("Hit");
         FirePoint firePoint = col.gameObject.GetComponent<FirePoint>();
         if (firePoint != null)
         {
-            UnityEngine.Debug.Log("Hit");
             reduceHealth(firePoint.damage);
             Destroy(col.gameObject);
         }

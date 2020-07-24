@@ -6,37 +6,41 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public float speed;
-    private Waypoints Wpoints;
-    private int waypointIndex = 0;
-    private Vector3 startingPosition;
-    private float goalDistance;
-    private Vector3 goalDirection;
+    Vector3 offset;
+    Waypoints Wpoints;
+    int waypointIndex = 0;
+    float goalDistance;
+    Vector3 previousPosition;
+    Vector3 goalDirection;
 
     void Start()
     {
+        offset = gameObject.transform.GetChild(0).position - transform.position;
         Wpoints = GameObject.FindObjectOfType<Waypoints>();
-        transform.position = Wpoints.waypoints[waypointIndex].position;
-        startingPosition = transform.position;
+        transform.position = Wpoints.waypoints[waypointIndex].position - offset;
         ++waypointIndex;
-        goalDistance = Vector2.Distance(startingPosition, Wpoints.waypoints[waypointIndex].position);
-        goalDirection = (Wpoints.waypoints[waypointIndex].position - transform.position).normalized;
+        goalDistance = Vector2.Distance(offset + transform.position, Wpoints.waypoints[waypointIndex].position);
+        goalDirection = (Wpoints.waypoints[waypointIndex].position - offset - transform.position).normalized;
+        previousPosition = transform.position + offset;
     }
 
     private void Update()
     {
-        transform.position += goalDirection * speed * Time.deltaTime;
-        while (Vector2.Distance(startingPosition, transform.position) >= goalDistance)
+        transform.Translate(goalDirection* speed * Time.deltaTime);
+        while (Vector2.Distance(previousPosition, transform.position + offset) >= goalDistance)
         {
             if (waypointIndex < Wpoints.waypoints.Length - 1)
             {
-                transform.position = Wpoints.waypoints[waypointIndex].position + Vector2.Distance(transform.position, Wpoints.waypoints[waypointIndex].position) * (Wpoints.waypoints[waypointIndex + 1].position - Wpoints.waypoints[waypointIndex].position).normalized;
-                waypointIndex++;
-                startingPosition = transform.position;
-                goalDistance = Vector2.Distance(startingPosition, Wpoints.waypoints[waypointIndex].position);
-                goalDirection = (Wpoints.waypoints[waypointIndex].position - startingPosition).normalized;
+                transform.position = (Wpoints.waypoints[waypointIndex].position + Vector2.Distance(transform.position + offset, Wpoints.waypoints[waypointIndex].position) * (Wpoints.waypoints[waypointIndex + 1].position - Wpoints.waypoints[waypointIndex].position).normalized) - offset;
+                ++waypointIndex;
+                goalDistance = Vector2.Distance(offset + transform.position, Wpoints.waypoints[waypointIndex].position);
+                goalDirection = (Wpoints.waypoints[waypointIndex].position - offset - transform.position).normalized;
+                previousPosition = transform.position + offset;
             }
             else
             {
+                PlayerStats.reduceLives(1);
+                --WaveSpawner.EnemiesAlive;
                 Destroy(gameObject);
                 break;
             }

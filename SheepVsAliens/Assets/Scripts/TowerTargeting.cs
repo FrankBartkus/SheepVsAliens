@@ -8,7 +8,6 @@ public class TowerTargeting : MonoBehaviour
 
     [Header("Attributes")]
 
-    public float range = 15f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
 
@@ -20,28 +19,30 @@ public class TowerTargeting : MonoBehaviour
     public GameObject objectToShoot;
     public bool rotate;
     public Transform firePoint;
+    TowerStats stats;
     Vector3 turrentRotation;
     Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        stats = gameObject.GetComponent<TowerStats>();
     }
 
     void UpdateTarget()
     {
         Character[] enemies = GameObject.FindObjectsOfType<Character>();
-        float minDistance = Mathf.Infinity;
+        float minDistance = -1f;
+        float enemyDistance = Mathf.Infinity;
         GameObject furthestEnemy = null;
-        float distanceToEnemy = Mathf.Infinity;
         foreach (Character enemy in enemies)
         {
-            distanceToEnemy = Vector3.Distance(transform.position, enemy.gameObject.transform.position);
-            if(distanceToEnemy <= range / 2f)
+            if (Vector3.Distance(transform.position, enemy.gameObject.transform.position) <= stats.range)
             {
-                if (enemy.DistanceFromStart() < minDistance)
+                enemyDistance = enemy.DistanceFromStart();
+                if (enemyDistance > minDistance)
                 {
-                    minDistance = distanceToEnemy;
+                    minDistance = enemyDistance;
                     furthestEnemy = enemy.gameObject;
                 }
             }
@@ -59,6 +60,7 @@ public class TowerTargeting : MonoBehaviour
         // Assigns closest alien in range to tower
 
 
+        fireCountdown -= Time.deltaTime;
         // If there isn't a target the tower can shoot
         if (target == null) return;
         // Target lock
@@ -74,20 +76,13 @@ public class TowerTargeting : MonoBehaviour
             shoot(target);
             fireCountdown = 1f / fireRate;
         }
-        fireCountdown -= Time.deltaTime;
 
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range / 2f);
-        Gizmos.DrawWireSphere(direction + transform.position, 1f);
     }
 
     void shoot(GameObject target)
     {
-        GameObject proj = Instantiate(objectToShoot, firePoint.position, Quaternion.Euler((rotate) ? turrentRotation : new Vector3(0f, 0f, Mathf.Atan2(direction.y, direction.x))));
-        proj.GetComponent<FirePoint>().Fire(target);
+        FirePoint point = Instantiate(objectToShoot, firePoint.position, Quaternion.Euler((rotate) ? turrentRotation : new Vector3(0f, 0f, Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg))).GetComponent<FirePoint>();
+        if(point != null)
+            point.Fire(target);
     }
 }
