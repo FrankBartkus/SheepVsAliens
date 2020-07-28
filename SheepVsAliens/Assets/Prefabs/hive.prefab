@@ -97,6 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 15
   range: 2
+  fireRate: 0.1
+  fireCountdown: 0
+  damage: 1
 --- !u!1 &7160366850689588938
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +212,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  maxRange: 2
-  timerMax: 0.1
-  damage: 10

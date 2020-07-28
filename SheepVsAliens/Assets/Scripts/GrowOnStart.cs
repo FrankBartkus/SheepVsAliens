@@ -5,37 +5,34 @@ using UnityEngine;
 
 public class GrowOnStart : MonoBehaviour
 {
+    TowerStats stats;
     public float speed = 10f;
-    public float maxRange = 10f;
-    public float timerMax = 0.1f;
-    public int damage = 10;
-    float timer = 0f;
     float area;
     float radius;
     // Start is called before the first frame update
     void Awake()
     {
+        stats = transform.parent.gameObject.GetComponent<TowerStats>();
         transform.localScale = Vector3.zero;
-        timer = timerMax;
         area = 0;
         radius = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        if (timer == timerMax)
+        if (stats.fireCountdown == stats.fireRate)
         {
             foreach (AlienHealth alienHealth in GameObject.FindObjectsOfType<AlienHealth>())
                 if (Vector2.Distance(alienHealth.gameObject.transform.position, transform.position) <= radius)
-                    alienHealth.reduceHealth(damage);
-            timer = 0f;
+                    alienHealth.reduceHealth(stats.damage);
+            stats.fireCountdown = 0f;
         }
         else
-            timer = Mathf.Clamp(timer + Time.deltaTime, 0f, timerMax);
-        if (radius == maxRange)
+            stats.fireCountdown = Mathf.Clamp(stats.fireCountdown + Time.deltaTime, 0f, stats.fireRate);
+        if (radius == stats.range)
             return;
         area += speed * Time.deltaTime;
-        radius = Mathf.Clamp(Mathf.Sqrt(area / Mathf.PI), 0f, maxRange); 
+        radius = Mathf.Clamp(Mathf.Sqrt(area / Mathf.PI), 0f, stats.range); 
         transform.localScale = new Vector3(radius * 2f, radius * 2f, transform.localScale.z);
     }
 }

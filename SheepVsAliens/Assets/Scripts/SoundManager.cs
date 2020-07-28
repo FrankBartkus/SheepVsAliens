@@ -7,20 +7,37 @@ public static class SoundManager
 
     public enum Sound
     {
-        LevelTheme,
+        AlienBeam,
+        AlienTalk,
+        AttackBee,
+        AttackChicken,
+        AttackGoat,
         ButtonClick,
         ButtonOver,
+        CashPickup,
+        DoorClose,
+        DoorOpen,
+        Error,
+        LevelTheme,
+        LifeLost,
+        Pause,
+        PumpkinExplosion,
+        TowerPlace,
+        TowerPurchase,
+        TowerUpgrade,
+        Unpause,
     }
 
     public static void PlaySound(Sound sound)
     {
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        soundGameObject.AddComponent<DestroySoundOnStop>();
         audioSource.PlayOneShot(GetAudioClip(sound));
     }
     public static void LoopSound(Sound sound)
     {
-        GameObject soundGameObject = new GameObject("Sound");
+        GameObject soundGameObject = new GameObject("Loop");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
         audioSource.clip = GetAudioClip(sound);

@@ -6,10 +6,6 @@ public class TowerTargeting : MonoBehaviour
 {
     GameObject target = null;
 
-    [Header("Attributes")]
-
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Alien";
@@ -31,11 +27,10 @@ public class TowerTargeting : MonoBehaviour
 
     void UpdateTarget()
     {
-        Character[] enemies = GameObject.FindObjectsOfType<Character>();
         float minDistance = -1f;
         float enemyDistance = Mathf.Infinity;
         GameObject furthestEnemy = null;
-        foreach (Character enemy in enemies)
+        foreach (Character enemy in GameObject.FindObjectsOfType<Character>())
         {
             if (Vector3.Distance(transform.position, enemy.gameObject.transform.position) <= stats.range)
             {
@@ -60,7 +55,7 @@ public class TowerTargeting : MonoBehaviour
         // Assigns closest alien in range to tower
 
 
-        fireCountdown -= Time.deltaTime;
+        stats.fireCountdown -= Time.deltaTime;
         // If there isn't a target the tower can shoot
         if (target == null) return;
         // Target lock
@@ -71,18 +66,21 @@ public class TowerTargeting : MonoBehaviour
             transform.rotation = Quaternion.Euler(turrentRotation);
         }
 
-        if (fireCountdown <= 0f)
+        if (stats.fireCountdown <= 0f)
         {
             shoot(target);
-            fireCountdown = 1f / fireRate;
+            stats.fireCountdown = stats.fireRate;
         }
-
     }
 
     void shoot(GameObject target)
     {
         FirePoint point = Instantiate(objectToShoot, firePoint.position, Quaternion.Euler((rotate) ? turrentRotation : new Vector3(0f, 0f, Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg))).GetComponent<FirePoint>();
-        if(point != null)
+        if (point != null)
+        {
+            point.damage = stats.damage;
+            point.dot.SetDoT(stats.overTime);
             point.Fire(target);
+        }
     }
 }

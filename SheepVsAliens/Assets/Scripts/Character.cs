@@ -15,30 +15,57 @@ public class Character : MonoBehaviour
 
     void Start()
     {
+        // gets the offset of the gameObject and the part to go on the track
         offset = gameObject.transform.GetChild(0).position - transform.position;
+
+        // Gets the array of positions for the map
         Wpoints = GameObject.FindObjectOfType<Waypoints>();
+
+        // Sets the offset to the track
         transform.position = Wpoints.waypoints[waypointIndex].position - offset;
+
+        // Moves to the next index
         ++waypointIndex;
+
+        // gets the distance from the current position to the end position 
         goalDistance = Vector2.Distance(offset + transform.position, Wpoints.waypoints[waypointIndex].position);
+
+        // gets the direction the current position to the end position 
         goalDirection = (Wpoints.waypoints[waypointIndex].position - offset - transform.position).normalized;
+
+        // gets the position before it started to move
         previousPosition = transform.position + offset;
     }
 
     private void Update()
     {
-        transform.Translate(goalDirection* speed * Time.deltaTime);
+        // moves the translation in a certain direction
+        transform.Translate(goalDirection * speed * Time.deltaTime);
+
+        // adjests the direction and distance for everytime it 
         while (Vector2.Distance(previousPosition, transform.position + offset) >= goalDistance)
         {
+            // checks if the waypoint index is done
             if (waypointIndex < Wpoints.waypoints.Length - 1)
             {
+                // sets the position to adjust for any offset the 
                 transform.position = (Wpoints.waypoints[waypointIndex].position + Vector2.Distance(transform.position + offset, Wpoints.waypoints[waypointIndex].position) * (Wpoints.waypoints[waypointIndex + 1].position - Wpoints.waypoints[waypointIndex].position).normalized) - offset;
+
+                // Moves to the next index
                 ++waypointIndex;
-                goalDistance = Vector2.Distance(offset + transform.position, Wpoints.waypoints[waypointIndex].position);
-                goalDirection = (Wpoints.waypoints[waypointIndex].position - offset - transform.position).normalized;
+
+                // gets the distance from the last position to the end position 
+                goalDistance = Vector2.Distance(Wpoints.waypoints[waypointIndex - 1].position, Wpoints.waypoints[waypointIndex].position);
+
+                // gets the direction the last position to the end position 
+                goalDirection = (Wpoints.waypoints[waypointIndex].position - Wpoints.waypoints[waypointIndex - 1].position).normalized;
+
+                // gets the position before it started to move
                 previousPosition = transform.position + offset;
             }
             else
             {
+                SoundManager.PlaySound(SoundManager.Sound.LifeLost);
                 PlayerStats.reduceLives(1);
                 --WaveSpawner.EnemiesAlive;
                 Destroy(gameObject);

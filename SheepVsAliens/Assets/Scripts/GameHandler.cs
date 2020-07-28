@@ -36,6 +36,7 @@ public class GameHandler : MonoBehaviour
         {
             audio.UnPause();
         }
+        SoundManager.PlaySound(SoundManager.Sound.Unpause);
         Time.timeScale = 1f;
     }
 
@@ -43,9 +44,8 @@ public class GameHandler : MonoBehaviour
     {
         PauseWindow.ShowStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
-        {
             audio.Pause();
-        }
+        SoundManager.PlaySound(SoundManager.Sound.Pause);
         Time.timeScale = 0f;
     }
 
@@ -59,7 +59,7 @@ public class GameHandler : MonoBehaviour
         GameOverWindow.ShowStatic();
         GameWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
-            audio.Stop();
+            Destroy(audio.gameObject);
         Time.timeScale = 0f;
     }
     public static void WinLevel()
@@ -67,7 +67,7 @@ public class GameHandler : MonoBehaviour
         GameOverWindow.ShowStatic();
         GameWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
-            audio.Stop();
+            Destroy(audio.gameObject);
         Time.timeScale = 0f;
     }
 }

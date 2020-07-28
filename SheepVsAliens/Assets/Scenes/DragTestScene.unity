@@ -555,6 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313728074}
   - component: {fileID: 1313728075}
+  - component: {fileID: 1313728076}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -593,6 +594,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f697c27ac07a7224ca3bdb28a602794f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1313728076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313728073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff163f01ebaf494ea08e8b10a7491e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - name: 
 --- !u!1 &1361474063
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +691,6 @@ MonoBehaviour:
   mousePosition: {x: 0, y: 0, z: 0}
   hoverSprite: {fileID: 0}
   rangeObject: {fileID: 0}
-  range: 0
 --- !u!1 &1378963624
 GameObject:
   m_ObjectHideFlags: 0

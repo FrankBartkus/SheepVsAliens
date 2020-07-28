@@ -5,9 +5,12 @@ using UnityEngine;
 public class FirePoint : MonoBehaviour
 {
     public float speed;
+    [HideInInspector]
     public int damage;
-    public static float timeTilDeath = 10f;
+    public static float timeTilDeath = 5f;
     float timeAlive = 0f;
+    [HideInInspector]
+    public TowerStats.DamageOverTime dot = new TowerStats.DamageOverTime();
 
     public void Fire(GameObject target)
     {
