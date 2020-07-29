@@ -26,6 +26,7 @@ public class AlienHealth : MonoBehaviour
 
             SoundManager.PlaySound(SoundManager.Sound.CashPickup);
 
+            SoundManager.PlaySound(SoundManager.Sound.AlienBeam);
             Destroy(gameObject);
         }
     }

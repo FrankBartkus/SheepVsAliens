@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DisapearingUI : MonoBehaviour
 {
-    public bool col;
     void OnMouseExit()
     {
-        col = false;
-        gameObject.SetActive(false);
+        gameObject.GetComponent<Image>().enabled = false;
+        foreach(Image image in GetComponentsInChildren<Image>())
+            image.enabled = false;
     }
     void OnMouseEnter()
     {
-        col = true;
+        gameObject.GetComponent<Image>().enabled = true;
+        foreach (Image image in GetComponentsInChildren<Image>())
+            image.enabled = true;
     }
 }

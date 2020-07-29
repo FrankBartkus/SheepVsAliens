@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f762e16f431ee494db7e2d03b7677423, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 187fcec8ff57646428069ddd5830b4da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8942376566656371291}
         m_MethodName: LevelUp
         m_Mode: 3
         m_Arguments:
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26115de4c6e33c948ad73b510270e78f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86d76c6c0630f0849b6fcc51f4b8401f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8942376566656371291}
         m_MethodName: LevelUp
         m_Mode: 3
         m_Arguments:
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7eeb0ed804c0c5a48a1943e1eec5d964, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5c1cb361eca9954d942128ded8322bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8942376566656371291}
         m_MethodName: LevelUp
         m_Mode: 3
         m_Arguments:
@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 7160366850232277662}
   - component: {fileID: 3537578790815331228}
   - component: {fileID: 8942376566656371291}
+  - component: {fileID: 1248077500514860468}
   m_Layer: 0
   m_Name: hive
   m_TagString: Tower
@@ -654,7 +655,33 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     cost: 40
-  ui: {fileID: 0}
+  ui: {fileID: 7588398830387755474}
+--- !u!61 &1248077500514860468
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160366850232277648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1.1043478}
+    newSize: {x: 1, y: 1.1043478}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.1043478}
+  m_EdgeRadius: 0
 --- !u!1 &7160366850689588938
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +692,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7160366850689588950}
   - component: {fileID: 7160366850689588937}
-  - component: {fileID: 7160366850689588936}
   - component: {fileID: 7160366850689588939}
   m_Layer: 0
   m_Name: bee swarm
@@ -738,22 +764,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7160366850689588936
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160366850689588938}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &7160366850689588939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.06}
+  m_AnchoredPosition: {x: 0, y: -0.15}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3098116216586820140

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,21 +17,6 @@ public class UpgradeTower : MonoBehaviour
 {
     public List<Upgrade> upgrades = new List<Upgrade>();
     int level = 0;
-    public GameObject ui;
-
-    void Awake()
-    {
-        ui.SetActive(false);
-    }
-    void OnMouseOver()
-    {
-        ui.gameObject.GetComponent<DisapearingUI>().col = true;
-        ui.SetActive(true);
-    }
-    void OnMouseExit()
-    {
-        ui.SetActive(ui.gameObject.GetComponent<DisapearingUI>().col);
-    }
 
     public void LevelUp(int finalLevel)
     {
