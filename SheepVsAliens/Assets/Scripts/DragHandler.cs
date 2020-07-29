@@ -72,11 +72,11 @@ public class DragHandler : MonoBehaviour
             hoverSprite.transform.position += goToNormal * speed * Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
-            if (cost <= PlayerStats.Money)
+            if (!ButtonAtPosition(hoverSprite.transform.position))
             {
-                if (!TurrentAtPosition(hoverSprite.transform.position))
+                if (cost <= PlayerStats.Money)
                 {
-                    if(!ButtonAtPosition(hoverSprite.transform.position))
+                    if(!TurrentAtPosition(hoverSprite.transform.position))
                     {
                         Instantiate(dragging, hoverSprite.transform.position, transform.rotation, GamePlayWindow.GetTransform());
                         PlayerStats.changeMoneyAmount(-cost);
@@ -86,12 +86,12 @@ public class DragHandler : MonoBehaviour
                         dragging = null;
                         isDragging = false;
                     }
+                    else
+                        SoundManager.PlaySound(SoundManager.Sound.Error);
                 }
                 else
                     SoundManager.PlaySound(SoundManager.Sound.Error);
             }
-            else
-                SoundManager.PlaySound(SoundManager.Sound.Error);
         }
     }
     bool TurrentAtPosition(Vector3 position)

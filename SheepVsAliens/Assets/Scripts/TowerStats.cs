@@ -47,8 +47,6 @@ public class TowerStats : MonoBehaviour
         {
             DoT = damageOverTime.DoT;
             DoTTime = damageOverTime.DoTTime;
-            DoTCurrentTime = 0f;
-            DoTFullTime = 0f;
         }
     }
 }

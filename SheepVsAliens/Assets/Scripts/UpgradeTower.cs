@@ -16,10 +16,25 @@ public class UpgradeTower : MonoBehaviour
 {
     public List<Upgrade> upgrades = new List<Upgrade>();
     int level = 0;
+    public GameObject ui;
 
-    public void LevelUp()
+    void Awake()
     {
-        if (level < upgrades.Count)
+        ui.SetActive(false);
+    }
+    void OnMouseOver()
+    {
+        ui.gameObject.GetComponent<DisapearingUI>().col = true;
+        ui.SetActive(true);
+    }
+    void OnMouseExit()
+    {
+        ui.SetActive(ui.gameObject.GetComponent<DisapearingUI>().col);
+    }
+
+    public void LevelUp(int finalLevel)
+    {
+        if (level + 1 == finalLevel)
         {
             if (PlayerStats.Money < upgrades[level].cost)
             {
@@ -29,6 +44,7 @@ public class UpgradeTower : MonoBehaviour
             UnityEngine.Debug.Log(upgrades[level].name);
             PlayerStats.changeMoneyAmount(-upgrades[level].cost);
             SoundManager.PlaySound(SoundManager.Sound.TowerPurchase);
+            SoundManager.PlaySound(SoundManager.Sound.TowerUpgrade);
             upgrades[level++].action.Invoke();
         }
         else

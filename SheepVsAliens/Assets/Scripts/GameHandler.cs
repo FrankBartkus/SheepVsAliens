@@ -64,8 +64,9 @@ public class GameHandler : MonoBehaviour
     }
     public static void WinLevel()
     {
-        GameOverWindow.ShowStatic();
+        WinWindow.ShowStatic();
         GameWindow.HideStatic();
+        GamePlayWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
             Destroy(audio.gameObject);
         Time.timeScale = 0f;

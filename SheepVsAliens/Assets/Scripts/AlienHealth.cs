@@ -15,7 +15,6 @@ public class AlienHealth : MonoBehaviour
     {
         hp -= amount;
 
-        UnityEngine.Debug.Log(hp);
         // Checks if enemie's health is zero
         if (hp <= 0)
         {
@@ -58,6 +57,10 @@ public class AlienHealth : MonoBehaviour
             }
             DoT.DoTCurrentTime += Time.deltaTime;
             DoT.DoTFullTime += Time.deltaTime;
+        }
+        else
+        {
+            DoT.DoT = 0f;
         }
     }
 }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8045987999604071536}
   - component: {fileID: 8045987999604071535}
   - component: {fileID: 8045987999604071537}
-  - component: {fileID: 8045987999604071538}
   - component: {fileID: 8045987999604071539}
+  - component: {fileID: 355305662634596760}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -97,33 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1f9cb3de51b9b4193d38d709c3b9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
---- !u!61 &8045987999604071538
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8045987999604071534}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3046875}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.609375}
-    newSize: {x: 1.92, y: 3.09}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  speed: 1
 --- !u!114 &8045987999604071539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +112,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   moneyForDefeating: 1
+  DoT:
+    DoT: 0
+    DoTTime: 0
+    DoTCurrentTime: 0
+    DoTFullTime: 0
+--- !u!58 &355305662634596760
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8045987999604071534}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.3046875}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &8045987999913203986
 GameObject:
   m_ObjectHideFlags: 0

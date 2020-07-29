@@ -10,7 +10,11 @@ public class MouseOver : MonoBehaviour
 
     void OnMouseOver()
     {
-        mouseOver = true;
+        if(!mouseOver)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.ButtonOver);
+            mouseOver = true;
+        }
     }
     void OnMouseExit()
     {

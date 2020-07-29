@@ -22,6 +22,7 @@ public static class SoundManager
         LifeLost,
         Pause,
         PumpkinExplosion,
+        RoundStart,
         TowerPlace,
         TowerPurchase,
         TowerUpgrade,
