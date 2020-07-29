@@ -729,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &717573573
 RectTransform:
   m_ObjectHideFlags: 0
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 187dac979639b9d438e03064fb1a363a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4438f297b651b774890a804dff2f0bb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 187dac979639b9d438e03064fb1a363a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4438f297b651b774890a804dff2f0bb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 187dac979639b9d438e03064fb1a363a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4438f297b651b774890a804dff2f0bb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1634,7 +1634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1874984450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 187dac979639b9d438e03064fb1a363a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4438f297b651b774890a804dff2f0bb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 187dac979639b9d438e03064fb1a363a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4438f297b651b774890a804dff2f0bb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   - sound: 10
     audioClip: {fileID: 8300000, guid: 9a5016f45eab8044683c6b71ccc42b47, type: 3}
   - sound: 11
-    audioClip: {fileID: 8300000, guid: a172055da886aea4eb8ec8ad3c4ae7d4, type: 3}
+    audioClip: {fileID: 8300000, guid: 31f5d1ab0df8c784a9e140ae4aabc9fd, type: 3}
   - sound: 12
     audioClip: {fileID: 8300000, guid: 8db63a1f767834248bad05f62cf76b7c, type: 3}
   - sound: 13
