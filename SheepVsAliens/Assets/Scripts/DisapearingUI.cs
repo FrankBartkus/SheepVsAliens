@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DisapearingUI : MonoBehaviour
 {
     MouseOver over;
+    static DisapearingUI display;
     void Awake()
     {
         over = transform.parent.parent.gameObject.GetComponent<MouseOver>();
@@ -20,10 +21,15 @@ public class DisapearingUI : MonoBehaviour
     }
     void OnMouseEnter()
     {
-        Appear(true);
+        if(!DragHandler.dragHandler.isDragging || transform.name == "TowerUI" && display == null)
+            Appear(true);
     }
     public void Appear(bool appear)
     {
+        if (appear)
+            display = this;
+        else
+            display = null;
         gameObject.GetComponent<Image>().enabled = appear;
         foreach (Image image in GetComponentsInChildren<Image>())
             image.enabled = appear;

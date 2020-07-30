@@ -138,8 +138,8 @@ public class DragHandler : MonoBehaviour
     }
     bool RouteAtPosition()
     {
-        BoxCollider2D box = dragging.GetComponent<BoxCollider2D>();
-        CircleCollider2D circle = dragging.GetComponent<CircleCollider2D>();
+        BoxCollider2D box = hoverSprite.GetComponent<BoxCollider2D>();
+        CircleCollider2D circle = hoverSprite.GetComponent<CircleCollider2D>();
         foreach (Collider2D noTouch in GameObject.Find("CantPlace").GetComponentsInChildren<Collider2D>())
         {
             if(box != null)
