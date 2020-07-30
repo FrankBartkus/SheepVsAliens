@@ -15,6 +15,8 @@ public class GameAssets : MonoBehaviour
 
     public Sprite rangeSprite;
     public Sprite checkSprite;
+    public Sprite alienHor;
+    public Sprite alienVert;
 
     public SoundAudioClip[] soundAudioClipArray;
 
