@@ -58,6 +58,8 @@ public class GameHandler : MonoBehaviour
     {
         GameOverWindow.ShowStatic();
         GameWindow.HideStatic();
+        WinWindow.HideStatic();
+        GamePlayWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
             Destroy(audio.gameObject);
         SoundManager.PlaySound(SoundManager.Sound.GameOverTheme);
@@ -67,6 +69,7 @@ public class GameHandler : MonoBehaviour
     {
         WinWindow.ShowStatic();
         GameWindow.HideStatic();
+        GameOverWindow.HideStatic();
         GamePlayWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
             Destroy(audio.gameObject);
