@@ -60,6 +60,7 @@ public class GameHandler : MonoBehaviour
         GameWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
             Destroy(audio.gameObject);
+        SoundManager.PlaySound(SoundManager.Sound.GameOverTheme);
         Time.timeScale = 0f;
     }
     public static void WinLevel()
@@ -69,6 +70,7 @@ public class GameHandler : MonoBehaviour
         GamePlayWindow.HideStatic();
         foreach (AudioSource audio in FindObjectsOfType<AudioSource>())
             Destroy(audio.gameObject);
+        SoundManager.PlaySound(SoundManager.Sound.VictoryTheme);
         Time.timeScale = 0f;
     }
 }

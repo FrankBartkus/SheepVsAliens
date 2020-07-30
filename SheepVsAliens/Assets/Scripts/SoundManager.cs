@@ -18,6 +18,7 @@ public static class SoundManager
         DoorClose,
         DoorOpen,
         Error,
+        GameOverTheme,
         LevelTheme,
         LifeLost,
         Pause,
@@ -27,6 +28,7 @@ public static class SoundManager
         TowerPurchase,
         TowerUpgrade,
         Unpause,
+        VictoryTheme,
     }
 
     public static void PlaySound(Sound sound)
