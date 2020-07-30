@@ -27,13 +27,16 @@ public class GrowOnStart : MonoBehaviour
     {
         if(beesAmbiance != null)
         {
-            if(beesAmbiance.isPlaying)
+            if(!GameHandler.IsGamePaused())
             {
-                if(!anyInRange())
-                    beesAmbiance.Pause();
+                if (beesAmbiance.isPlaying)
+                {
+                    if (!anyInRange())
+                        beesAmbiance.Pause();
+                }
+                else if (anyInRange())
+                    beesAmbiance.UnPause();
             }
-            else if(anyInRange())
-                beesAmbiance.UnPause();
         }
         if (stats.fireCountdown == stats.fireRate)
         {

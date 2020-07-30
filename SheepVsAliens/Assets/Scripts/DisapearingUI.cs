@@ -5,16 +5,27 @@ using UnityEngine.UI;
 
 public class DisapearingUI : MonoBehaviour
 {
+    MouseOver over;
+    void Awake()
+    {
+        over = transform.parent.parent.gameObject.GetComponent<MouseOver>();
+        Appear(false);
+    }
     void OnMouseExit()
     {
-        gameObject.GetComponent<Image>().enabled = false;
-        foreach(Image image in GetComponentsInChildren<Image>())
-            image.enabled = false;
+        if (!over != null)
+            if (over.mouseOver)
+                return;
+        Appear(false);
     }
     void OnMouseEnter()
     {
-        gameObject.GetComponent<Image>().enabled = true;
+        Appear(true);
+    }
+    public void Appear(bool appear)
+    {
+        gameObject.GetComponent<Image>().enabled = appear;
         foreach (Image image in GetComponentsInChildren<Image>())
-            image.enabled = true;
+            image.enabled = appear;
     }
 }

@@ -14,6 +14,7 @@ public class GameAssets : MonoBehaviour
     }
 
     public Sprite rangeSprite;
+    public Sprite checkSprite;
 
     public SoundAudioClip[] soundAudioClipArray;
 

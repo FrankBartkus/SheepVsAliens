@@ -7,9 +7,16 @@ public class MouseOver : MonoBehaviour
 {
     [HideInInspector]
     public bool mouseOver = false;
+    DisapearingUI ui;
 
-    void OnMouseOver()
+    void Awake()
     {
+        ui = GetComponentInChildren<DisapearingUI>();
+    }
+    void OnMouseEnter()
+    {   
+        if(ui != null)
+            ui.Appear(true);
         if(!mouseOver)
         {
             SoundManager.PlaySound(SoundManager.Sound.ButtonOver);
@@ -19,5 +26,7 @@ public class MouseOver : MonoBehaviour
     void OnMouseExit()
     {
         mouseOver = false;
+        if (ui != null)
+            ui.Appear(false);
     }
 }
