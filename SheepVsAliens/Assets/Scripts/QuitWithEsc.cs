@@ -17,10 +17,9 @@ public class QuitWithEsc : MonoBehaviour
         //Do keep in mind that this code will NOT work without building the scene first.
         //Pressing ESC while just running it will do nothing.
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        if(GameHandler.IsGamePaused())
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Application.Quit();
 
         //That makes it so pressing ESC quits the application (aka the game).
     }

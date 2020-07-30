@@ -710,7 +710,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -718,14 +717,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3396,6 +3387,7 @@ GameObject:
   - component: {fileID: 2107137452}
   - component: {fileID: 2107137455}
   - component: {fileID: 2107137454}
+  - component: {fileID: 2107137456}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -3417,8 +3409,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemy: {fileID: 8045987999604071534, guid: 6f569b38555da66489e7cf201b49aa46, type: 3}
-    count: 5
+    count: 50
     rate: 1
+  - enemy: {fileID: 8045987999604071534, guid: 6f569b38555da66489e7cf201b49aa46, type: 3}
+    count: 150
+    rate: 0.5
+  - enemy: {fileID: 8045987999604071534, guid: 6f569b38555da66489e7cf201b49aa46, type: 3}
+    count: 300
+    rate: 0.1
   spawnPoint: {fileID: 1039381716}
   timeBetweenWaves: 10
   waveCountdownText: {fileID: 2033780465}
@@ -3493,23 +3491,25 @@ MonoBehaviour:
   - sound: 10
     audioClip: {fileID: 8300000, guid: 9a5016f45eab8044683c6b71ccc42b47, type: 3}
   - sound: 11
-    audioClip: {fileID: 8300000, guid: 31f5d1ab0df8c784a9e140ae4aabc9fd, type: 3}
+    audioClip: {fileID: 8300000, guid: 86f9445dc57285c469fd4702ad50035e, type: 3}
   - sound: 12
-    audioClip: {fileID: 8300000, guid: 8db63a1f767834248bad05f62cf76b7c, type: 3}
+    audioClip: {fileID: 8300000, guid: 31f5d1ab0df8c784a9e140ae4aabc9fd, type: 3}
   - sound: 13
-    audioClip: {fileID: 8300000, guid: c9d7ee42b9db9a64391a0de0c346141c, type: 3}
+    audioClip: {fileID: 8300000, guid: 8db63a1f767834248bad05f62cf76b7c, type: 3}
   - sound: 14
-    audioClip: {fileID: 8300000, guid: 5ba7a186509b7ae4c8a6a3747e593b6e, type: 3}
+    audioClip: {fileID: 8300000, guid: c9d7ee42b9db9a64391a0de0c346141c, type: 3}
   - sound: 15
-    audioClip: {fileID: 8300000, guid: 288b797e9ee92db4a92c4b235bea0fa9, type: 3}
+    audioClip: {fileID: 8300000, guid: 5ba7a186509b7ae4c8a6a3747e593b6e, type: 3}
   - sound: 16
-    audioClip: {fileID: 8300000, guid: 288b797e9ee92db4a92c4b235bea0fa9, type: 3}
+    audioClip: {fileID: 8300000, guid: 9886fa4f9e1388a4290f5c60541a509a, type: 3}
   - sound: 17
-    audioClip: {fileID: 8300000, guid: 9efce13b3fd666e4d931095defe3e9c5, type: 3}
+    audioClip: {fileID: 8300000, guid: 288b797e9ee92db4a92c4b235bea0fa9, type: 3}
   - sound: 18
-    audioClip: {fileID: 8300000, guid: 4a8cb11e9ec8bd74ea26e1c5d96226bb, type: 3}
+    audioClip: {fileID: 8300000, guid: 9efce13b3fd666e4d931095defe3e9c5, type: 3}
   - sound: 19
-    audioClip: {fileID: 8300000, guid: e32b1509adda05d4385eedb3b113889a, type: 3}
+    audioClip: {fileID: 8300000, guid: 4a8cb11e9ec8bd74ea26e1c5d96226bb, type: 3}
+  - sound: 21
+    audioClip: {fileID: 8300000, guid: 07ab585766c4b4446aad8468cd29a0a8, type: 3}
 --- !u!114 &2107137453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,6 +3549,14 @@ MonoBehaviour:
   startMoney: 400
   startLives: 5
   moneyText: {fileID: 878329540}
+--- !u!81 &2107137456
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107137448}
+  m_Enabled: 1
 --- !u!1 &2136401882
 GameObject:
   m_ObjectHideFlags: 0
