@@ -14,6 +14,7 @@ public class AlienHealth : MonoBehaviour
     public void reduceHealth(int amount)
     {
         hp -= amount;
+        StartCoroutine(redFlash());
 
         // Checks if enemie's health is zero
         if (hp <= 0)
@@ -63,5 +64,15 @@ public class AlienHealth : MonoBehaviour
         {
             DoT.DoT = 0f;
         }
+    }
+
+    IEnumerator redFlash()
+    {
+        // adds a red material
+        gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        // waits for 0.1 secs (0.2 made it so the bees were causing the aliens to flash like horrible, possibly seizure-inducing christmas lights
+        yield return new WaitForSeconds(0.1f);
+        // returns the material to white
+        gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
     }
 }
