@@ -36,12 +36,13 @@ public class DragHandler : MonoBehaviour
             if(turrent.GetComponent<BoxCollider2D>() != null)
             {
                 hoverSprite.AddComponent<BoxCollider2D>().size = turrent.GetComponent<BoxCollider2D>().size;
-                hoverSprite.GetComponent<BoxCollider2D>().isTrigger = true; ;
+                hoverSprite.GetComponent<BoxCollider2D>().offset = turrent.GetComponent<BoxCollider2D>().offset;
+                hoverSprite.GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else if(turrent.GetComponent<CircleCollider2D>() != null)
             {
                 hoverSprite.AddComponent<CircleCollider2D>().radius = turrent.GetComponent<CircleCollider2D>().radius;
-                hoverSprite.GetComponent<CircleCollider2D>().isTrigger = true; ;
+                hoverSprite.GetComponent<CircleCollider2D>().isTrigger = true;
             }
             range = turrent.GetComponent<TowerStats>().range;
             cost = turrent.GetComponent<TowerStats>().cost;
