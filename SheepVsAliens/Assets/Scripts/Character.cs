@@ -12,9 +12,11 @@ public class Character : MonoBehaviour
     float goalDistance;
     Vector3 previousPosition;
     Vector3 goalDirection;
+    Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         // gets the offset of the gameObject and the part to go on the track
         offset = gameObject.transform.GetChild(0).position - transform.position;
 
@@ -32,6 +34,9 @@ public class Character : MonoBehaviour
 
         // gets the direction the current position to the end position 
         goalDirection = (Wpoints.waypoints[waypointIndex].position - offset - transform.position).normalized;
+
+        animator.SetFloat("x", goalDirection.x);
+        animator.SetFloat("y", goalDirection.y);
 
         // gets the position before it started to move
         previousPosition = transform.position + offset;
@@ -56,9 +61,11 @@ public class Character : MonoBehaviour
 
                 // gets the distance from the last position to the end position 
                 goalDistance = Vector2.Distance(Wpoints.waypoints[waypointIndex - 1].position, Wpoints.waypoints[waypointIndex].position);
-
                 // gets the direction the last position to the end position 
                 goalDirection = (Wpoints.waypoints[waypointIndex].position - Wpoints.waypoints[waypointIndex - 1].position).normalized;
+
+                animator.SetFloat("x", goalDirection.x);
+                animator.SetFloat("y", goalDirection.y);
 
                 // gets the position before it started to move
                 previousPosition = transform.position + offset;
