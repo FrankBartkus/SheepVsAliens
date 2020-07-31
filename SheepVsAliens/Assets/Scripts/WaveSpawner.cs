@@ -19,8 +19,10 @@ public class WaveSpawner : MonoBehaviour
 	public Wave[] waves;
 	
 	public Transform spawnPoint;
-	
+
 	public float timeBetweenWaves = 5f;
+	public float timeBetweenBursts = 3f;
+	public float timeBetweenEnemies = 1f;
 	private float countdown = 3.0f;
 
 	public Text waveCountdownText;
@@ -60,20 +62,19 @@ public class WaveSpawner : MonoBehaviour
 	IEnumerator SpawnWave()
 	{
 		PlayerStats.Rounds++;
-	
+
 		Wave wave = waves[waveIndex];
-	
+		speed += wave.speedIncrease;
+
 		EnemiesAlive = wave.count;
 	
 		for (int i = 0; i < wave.count; i++)
 		{
 			SpawnEnemy(wave.enemy);
-			speed += wave.speedIncrease;
 			if ((i + 1) % wave.bursts == 0)
-				yield return new WaitForSeconds(4f);
-			yield return new WaitForSeconds(.2f);
+				yield return new WaitForSeconds(timeBetweenBursts);
+			yield return new WaitForSeconds(timeBetweenEnemies);
 		}
-		speed = 0;
 		waveIndex++;
 	}
 	
