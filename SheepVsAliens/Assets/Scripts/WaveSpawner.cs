@@ -64,7 +64,6 @@ public class WaveSpawner : MonoBehaviour
 		PlayerStats.Rounds++;
 
 		Wave wave = waves[waveIndex];
-		speed += wave.speedIncrease;
 
 		EnemiesAlive = wave.count;
 	
@@ -76,11 +75,11 @@ public class WaveSpawner : MonoBehaviour
 			yield return new WaitForSeconds(timeBetweenEnemies);
 		}
 		waveIndex++;
+		speed += waves[waveIndex].speedIncrease;
 	}
 	
 	void SpawnEnemy(GameObject enemy)
 	{
-		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-		enemy.GetComponent<Character>().speed += speed;
+		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation).GetComponent<Character>().speed += speed;
 	}
 }
