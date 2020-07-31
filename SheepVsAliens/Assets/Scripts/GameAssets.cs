@@ -15,8 +15,14 @@ public class GameAssets : MonoBehaviour
 
     public Sprite rangeSprite;
     public Sprite checkSprite;
-    public Sprite alienHor;
-    public Sprite alienVert;
+    public Sprite dustCloud;
+
+    public static GameObject SpriteToGameObject(Sprite sprite)
+    {
+        GameObject newGameObject = new GameObject();
+        newGameObject.AddComponent<SpriteRenderer>().sprite = sprite;
+        return newGameObject;
+    }
 
     public SoundAudioClip[] soundAudioClipArray;
 

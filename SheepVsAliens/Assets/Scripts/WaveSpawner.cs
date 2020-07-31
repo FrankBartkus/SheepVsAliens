@@ -65,6 +65,7 @@ public class WaveSpawner : MonoBehaviour
 
 		Wave wave = waves[waveIndex];
 
+		speed += waves[waveIndex].speedIncrease;
 		EnemiesAlive = wave.count;
 	
 		for (int i = 0; i < wave.count; i++)
@@ -75,7 +76,6 @@ public class WaveSpawner : MonoBehaviour
 			yield return new WaitForSeconds(timeBetweenEnemies);
 		}
 		waveIndex++;
-		speed += waves[waveIndex].speedIncrease;
 	}
 	
 	void SpawnEnemy(GameObject enemy)

@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 200
+  timeTilDustDisapear: 0.75
   moneyForDefeating: 99999
   DoT:
     DoT: 0
@@ -145,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 5655201778630185113}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6893c630bf296f64ab36b9354470b5e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

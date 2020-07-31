@@ -3597,8 +3597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeSprite: {fileID: 21300000, guid: c1477254b274a3d45a276d222f5fe049, type: 3}
   checkSprite: {fileID: 21300000, guid: de28897d6a11e0c47a99a62338e5b748, type: 3}
-  alienHor: {fileID: 0}
-  alienVert: {fileID: 0}
+  dustCloud: {fileID: 21300000, guid: 94791ce2607c7804990451b85d5680e4, type: 3}
   soundAudioClipArray:
   - sound: 0
     audioClip: {fileID: 8300000, guid: 28cbf881db08ea241907682dcaa18173, type: 3}
@@ -3642,6 +3641,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 4a8cb11e9ec8bd74ea26e1c5d96226bb, type: 3}
   - sound: 21
     audioClip: {fileID: 8300000, guid: 07ab585766c4b4446aad8468cd29a0a8, type: 3}
+  - sound: 20
+    audioClip: {fileID: 8300000, guid: e32b1509adda05d4385eedb3b113889a, type: 3}
 --- !u!114 &2107137453
 MonoBehaviour:
   m_ObjectHideFlags: 0

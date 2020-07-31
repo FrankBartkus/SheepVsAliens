@@ -6,6 +6,7 @@ using UnityEngine;
 public class AlienHealth : MonoBehaviour
 {
     public int hp = 100;
+    public float timeTilDustDisapear = 1f;
     public int moneyForDefeating;
 
     public TowerStats.DamageOverTime DoT = new TowerStats.DamageOverTime();
@@ -28,8 +29,14 @@ public class AlienHealth : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.CashPickup);
 
             SoundManager.PlaySound(SoundManager.Sound.AlienBeam);
+            destroy(GameAssets.SpriteToGameObject(GameAssets.i.dustCloud)).transform.position = transform.position + new Vector3(gameObject.GetComponent<Collider2D>().offset.x, gameObject.GetComponent<Collider2D>().offset.y, 0);
             Destroy(gameObject);
         }
+    }
+    GameObject destroy(GameObject tobreak)
+    {
+        Destroy(tobreak, timeTilDustDisapear);
+        return tobreak;
     }
     void OnTriggerEnter2D(Collider2D col)
     {
