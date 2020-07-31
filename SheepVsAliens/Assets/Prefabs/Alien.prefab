@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 125
-  moneyForDefeating: 1
+  moneyForDefeating: 2
   DoT:
     DoT: 0
     DoTTime: 0

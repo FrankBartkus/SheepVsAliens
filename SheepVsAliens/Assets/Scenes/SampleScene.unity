@@ -3547,7 +3547,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1039381716}
   timeBetweenWaves: 10
   timeBetweenBursts: 10
-  timeBetweenEnemies: 2
+  timeBetweenEnemies: 1.5
   waveCountdownText: {fileID: 2033780465}
 --- !u!4 &2107137450
 Transform:
