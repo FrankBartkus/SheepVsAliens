@@ -6,6 +6,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public float speed;
+    public bool goDestination = false;
     Vector3 offset;
     Waypoints Wpoints;
     int waypointIndex = 0;
@@ -27,7 +28,10 @@ public class Character : MonoBehaviour
         transform.position = Wpoints.waypoints[waypointIndex].position - offset;
 
         // Moves to the next index
-        ++waypointIndex;
+        if (goDestination)
+            waypointIndex = Wpoints.waypoints.Length - 1;
+        else
+            ++waypointIndex;
 
         // gets the distance from the current position to the end position 
         goalDistance = Vector2.Distance(offset + transform.position, Wpoints.waypoints[waypointIndex].position);
