@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1f9cb3de51b9b4193d38d709c3b9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.75
+  goDestination: 0
 --- !u!114 &8045987999604071539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005b0394b34a7ac4a9f2ac2dbb1c2054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 125
   moneyForDefeating: 1
   DoT:
     DoT: 0
