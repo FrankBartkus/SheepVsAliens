@@ -3546,7 +3546,7 @@ MonoBehaviour:
     speedIncrease: 0
   spawnPoint: {fileID: 1039381716}
   timeBetweenWaves: 10
-  timeBetweenBursts: 10
+  timeBetweenBursts: 7
   timeBetweenEnemies: 1.5
   waveCountdownText: {fileID: 2033780465}
 --- !u!4 &2107137450
