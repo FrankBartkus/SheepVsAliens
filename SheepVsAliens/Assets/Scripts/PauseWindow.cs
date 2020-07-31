@@ -7,7 +7,7 @@ public class PauseWindow : MonoBehaviour
 {
     private static PauseWindow instance;
 
-    private void Awake()
+   private void Awake()
     {
         instance = this;
 
@@ -15,6 +15,8 @@ public class PauseWindow : MonoBehaviour
         transform.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
 
         Hide();
+
+       
     }
 
     private void Show()
