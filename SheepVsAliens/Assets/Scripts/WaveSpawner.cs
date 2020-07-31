@@ -21,7 +21,7 @@ public class WaveSpawner : MonoBehaviour
 	public Transform spawnPoint;
 
 	public float timeBetweenWaves = 5f;
-	public float timeBetweenBursts = 100f;
+	public float timeBetweenBursts = 3f;
 	public float timeBetweenEnemies = 1f;
 	private float countdown = 3.0f;
 
