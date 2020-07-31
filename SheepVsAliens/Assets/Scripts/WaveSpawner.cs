@@ -12,7 +12,7 @@ public class WaveSpawner : MonoBehaviour
 		public GameObject enemy;
 		public int count;
 		public int bursts;
-		public float speedIncrease = 0;
+		public float speedIncrease = 0.5f;
 	}
 	public static int EnemiesAlive = 0;
 
