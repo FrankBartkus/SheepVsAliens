@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  timeTilDustDisapear: 0.75
+  timeTilDustDisapear: 0.1
   moneyForDefeating: 2
   DoT:
     DoT: 0
