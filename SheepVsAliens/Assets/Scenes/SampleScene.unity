@@ -3540,6 +3540,10 @@ MonoBehaviour:
     count: 100
     bursts: 20
     speedIncrease: 0.5
+  - enemy: {fileID: 5655201778630185113, guid: cb5b367b892951045949949ffd5133a8, type: 3}
+    count: 1
+    bursts: 1
+    speedIncrease: 0
   spawnPoint: {fileID: 1039381716}
   timeBetweenWaves: 10
   timeBetweenBursts: 10
