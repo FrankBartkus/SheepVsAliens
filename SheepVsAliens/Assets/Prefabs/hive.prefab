@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 7160366850689588950}
   - component: {fileID: 7160366850689588937}
   - component: {fileID: 7160366850689588939}
+  - component: {fileID: 7343587449153919482}
   m_Layer: 0
   m_Name: bee swarm
   m_TagString: Untagged
@@ -712,7 +713,7 @@ Transform:
   m_GameObject: {fileID: 7160366850689588938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7160366850232277663}
   m_RootOrder: 0
@@ -756,7 +757,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 907680453098c904b8fe7ff4d6877e71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edf217835d6d6ef47b30d20fedc77911, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -780,6 +781,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  turnSpeed: 10
+--- !u!95 &7343587449153919482
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160366850689588938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe3213e10b6d0b54ca5c257985c21ae6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7588398830387755474
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,8 @@ public class WaveSpawner : MonoBehaviour
 	
 		public GameObject enemy;
 		public int count;
-		public float rate;
-	
+		public int bursts;
+		public float speedIncrease = 0;
 	}
 	public static int EnemiesAlive = 0;
 
@@ -26,7 +26,9 @@ public class WaveSpawner : MonoBehaviour
 	public Text waveCountdownText;
 
 	private int waveIndex = 0;
-	
+
+	private float speed = 0;
+
 	void Update()
 	{
 		if (EnemiesAlive > 0)
@@ -66,14 +68,18 @@ public class WaveSpawner : MonoBehaviour
 		for (int i = 0; i < wave.count; i++)
 		{
 			SpawnEnemy(wave.enemy);
-			yield return new WaitForSeconds(1f / wave.rate);
+			speed += wave.speedIncrease;
+			if ((i + 1) % wave.bursts == 0)
+				yield return new WaitForSeconds(4f);
+			yield return new WaitForSeconds(.2f);
 		}
-	
+		speed = 0;
 		waveIndex++;
 	}
 	
 	void SpawnEnemy(GameObject enemy)
 	{
 		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+		enemy.GetComponent<Character>().speed += speed;
 	}
 }
